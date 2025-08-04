@@ -301,31 +301,31 @@ Our test suite requires some Python dependencies for comprehensive testing. Here
                     <th>🎯 Use Case</th>
                 </tr>
                 <tr>
-                    <td><code>XXX_BUILD_TESTS</code></td>
+                    <td><code>VideoStabilization_BUILD_TESTS</code></td>
                     <td>🔧 Build all test suites</td>
                     <td><code>ON</code></td>
                     <td>Complete testing pipeline</td>
                 </tr>
                 <tr>
-                    <td><code>XXX_BUILD_UNITTESTS</code></td>
+                    <td><code>VideoStabilization_BUILD_UNITTESTS</code></td>
                     <td>✅ Build unit tests only</td>
                     <td><code>ON</code></td>
                     <td>Fast development feedback</td>
                 </tr>
                 <tr>
-                    <td><code>XXX_BUILD_FUZZTESTS</code></td>
+                    <td><code>VideoStabilization_BUILD_FUZZTESTS</code></td>
                     <td>🎲 Build fuzz testing suite</td>
                     <td><code>OFF</code></td>
                     <td>Security & robustness testing</td>
                 </tr>
                 <tr>
-                    <td><code>XXX_ENABLE_COVERAGE</code></td>
+                    <td><code>VideoStabilization_ENABLE_COVERAGE</code></td>
                     <td>📊 Generate test coverage reports</td>
                     <td><code>OFF</code></td>
                     <td>Code quality metrics</td>
                 </tr>
                 <tr>
-                    <td><code>XXX_ENABLE_MEMLEAK_CHECK</code></td>
+                    <td><code>VideoStabilization_ENABLE_MEMLEAK_CHECK</code></td>
                     <td>🔍 Memory leak detection with MemPlumber</td>
                     <td><code>OFF</code></td>
                     <td>Debug memory issues</td>
@@ -340,13 +340,13 @@ Our test suite requires some Python dependencies for comprehensive testing. Here
                     <th>🎯 Use Case</th>
                 </tr>
                 <tr>
-                    <td><code>XXX_ENABLE_SYMBOL_GENERATION</code></td>
+                    <td><code>VideoStabilization_ENABLE_SYMBOL_GENERATION</code></td>
                     <td>🔧 Generate debug symbols for crash dumps</td>
                     <td><code>OFF</code></td>
                     <td>Production debugging</td>
                 </tr>
                 <tr>
-                    <td><code>XXX_ENABLE_PACKAGING</code></td>
+                    <td><code>VideoStabilization_ENABLE_PACKAGING</code></td>
                     <td>📦 Enable DEB/RPM packaging with systemd</td>
                     <td><code>OFF</code></td>
                     <td>Distribution & deployment</td>
@@ -356,20 +356,20 @@ Our test suite requires some Python dependencies for comprehensive testing. Here
         <td width="40%">
             <h4>💡 <strong>Quick Examples</strong></h4>
             <pre><code class="bash"># Development build with all tests
-cmake -B build -DXXX_BUILD_TESTS=ON \
-                -DXXX_ENABLE_COVERAGE=ON
+cmake -B build -DVideoStabilization_BUILD_TESTS=ON \
+                -DVideoStabilization_ENABLE_COVERAGE=ON
 <br>
 # Production build with packaging
-cmake -B build -DXXX_BUILD_TESTS=OFF \
-                -DXXX_ENABLE_PACKAGING=ON \
-                -DXXX_ENABLE_SYMBOL_GENERATION=ON
+cmake -B build -DVideoStabilization_BUILD_TESTS=OFF \
+                -DVideoStabilization_ENABLE_PACKAGING=ON \
+                -DVideoStabilization_ENABLE_SYMBOL_GENERATION=ON
 <br>
 # Security testing build
-cmake -B build -DXXX_BUILD_FUZZTESTS=ON \
-                -DXXX_ENABLE_MEMLEAK_CHECK=ON
+cmake -B build -DVideoStabilization_BUILD_FUZZTESTS=ON \
+                -DVideoStabilization_ENABLE_MEMLEAK_CHECK=ON
 <br>
 # Minimal build (fastest)
-cmake -B build -DXXX_BUILD_TESTS=OFF</code></pre>
+cmake -B build -DVideoStabilization_BUILD_TESTS=OFF</code></pre>
             <h4>⚡ <strong>Pro Tips</strong></h4>
             <ul>
                 <li>🏃 <strong>Fast Iteration</strong>: Disable tests for quick builds during development</li>

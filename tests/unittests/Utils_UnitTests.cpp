@@ -120,7 +120,7 @@ TEST(Utils_Tests, InputParserUnitTests)
 	ASSERT_EQ(options[0].second, "");
 }
 
-#ifndef XXX_ENABLE_MEMLEAK_CHECK
+#ifndef VideoStabilization_ENABLE_MEMLEAK_CHECK
 // Google tracer client does not support destroying tracer completely
 // This is a workaround to avoid memory leak detection issues with the Google tracer client.
 // The tracer client is not designed to be destroyed, so we skip this test when memory leak
@@ -134,4 +134,4 @@ TEST(Utils_Tests, TracerUnitTests)
 		ASSERT_TRUE(tracer.isRunning());
 	}
 }
-#endif // XXX_ENABLE_MEMLEAK_CHECK
+#endif // VideoStabilization_ENABLE_MEMLEAK_CHECK

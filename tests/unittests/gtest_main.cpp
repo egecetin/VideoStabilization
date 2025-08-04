@@ -5,7 +5,7 @@
 #include <gtest/gtest.h>
 #include <spdlog/spdlog.h>
 
-#ifdef XXX_ENABLE_MEMLEAK_CHECK
+#ifdef VideoStabilization_ENABLE_MEMLEAK_CHECK
 #include <memplumber.h>
 #endif
 
@@ -20,12 +20,12 @@ int main(int argc, char **argv)
 	vCheckFlag.emplace_back("Test Disabled Info", std::make_unique<std::atomic_flag>(false));
 	vCheckFlag.emplace_back("Test Enabled Info", std::make_unique<std::atomic_flag>(true));
 
-#ifdef XXX_ENABLE_MEMLEAK_CHECK
+#ifdef VideoStabilization_ENABLE_MEMLEAK_CHECK
 	MemPlumber::start();
 #endif
 	retval = RUN_ALL_TESTS();
 	spdlog::shutdown();
-#ifdef XXX_ENABLE_MEMLEAK_CHECK
+#ifdef VideoStabilization_ENABLE_MEMLEAK_CHECK
 	MemPlumber::stop();
 
 	// Check memory leak

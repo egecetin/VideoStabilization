@@ -82,7 +82,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
-      "description": "Version of XXX",
+      "description": "Version of VideoStabilization",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -136,7 +136,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "XXX_info{instance=\"$instance\"}",
+          "expr": "VideoStabilization_info{instance=\"$instance\"}",
           "format": "time_series",
           "instant": true,
           "legendFormat": "__auto",
@@ -1949,13 +1949,13 @@
     "list": [
       {
         "current": {},
-        "definition": "label_values(XXX_info,instance)",
+        "definition": "label_values(VideoStabilization_info,instance)",
         "label": "Host",
         "name": "instance",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(XXX_info,instance)",
+          "query": "label_values(VideoStabilization_info,instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1970,7 +1970,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "XXX Test Dashboard",
+  "title": "VideoStabilization Test Dashboard",
   "uid": "ee217hei8lrswa",
   "version": 13,
   "weekStart": ""

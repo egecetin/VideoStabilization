@@ -58,7 +58,7 @@ jobs:
           . .venv/bin/activate
           pip3 install -r tests/data/requirements.txt
       - name: Configure
-        run: cmake -DXXX_ENABLE_MEMLEAK_CHECK=ON -S . -B build
+        run: cmake -DVideoStabilization_ENABLE_MEMLEAK_CHECK=ON -S . -B build
       - name: Build
         run: cmake --build build --parallel
       - name: Run tests
@@ -99,7 +99,7 @@ jobs:
           . .venv/bin/activate
           pip3 install -r tests/data/requirements.txt
       - name: Configure
-        run: cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DXXX_BUILD_UNITTESTS=OFF -DXXX_BUILD_FUZZTESTS=ON -DXXX_ENABLE_${{ matrix.sanitizer }}=ON -S . -B build
+        run: cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DVideoStabilization_BUILD_UNITTESTS=OFF -DVideoStabilization_BUILD_FUZZTESTS=ON -DVideoStabilization_ENABLE_${{ matrix.sanitizer }}=ON -S . -B build
       - name: Build
         run: cmake --build build --parallel
       - name: Run tests

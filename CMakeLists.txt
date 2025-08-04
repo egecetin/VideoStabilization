@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(XXX)
+project(VideoStabilization)
 
 # CMake Modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
@@ -15,13 +15,13 @@ find_package(RapidJSON REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(ZLIB REQUIRED)
 
-option(XXX_BUILD_TESTS "Build XXX tests" ON)
-option(XXX_BUILD_UNITTESTS "Build XXX unit tests" ON)
-option(XXX_BUILD_FUZZTESTS "Build XXX fuzz tests" OFF)
-option(XXX_ENABLE_COVERAGE "Enables coverage report generation" OFF)
-option(XXX_ENABLE_MEMLEAK_CHECK "Enables Memory Leak Checker for unit tests" OFF)
-option(XXX_ENABLE_SYMBOL_GENERATION "Enables symbol generation for binaries (Requires breakpad)" OFF)
-option(XXX_ENABLE_PACKAGING "Enables DEB/RPM packaging" OFF)
+option(VideoStabilization_BUILD_TESTS "Build VideoStabilization tests" ON)
+option(VideoStabilization_BUILD_UNITTESTS "Build VideoStabilization unit tests" ON)
+option(VideoStabilization_BUILD_FUZZTESTS "Build VideoStabilization fuzz tests" OFF)
+option(VideoStabilization_ENABLE_COVERAGE "Enables coverage report generation" OFF)
+option(VideoStabilization_ENABLE_MEMLEAK_CHECK "Enables Memory Leak Checker for unit tests" OFF)
+option(VideoStabilization_ENABLE_SYMBOL_GENERATION "Enables symbol generation for binaries (Requires breakpad)" OFF)
+option(VideoStabilization_ENABLE_PACKAGING "Enables DEB/RPM packaging" OFF)
 
 # Set project properties
 set(PROJECT_VERSION_MAJOR 0)
@@ -106,7 +106,7 @@ include_directories(${PROJECT_SOURCE_DIR}/thirdparty/sentry/external/crashpad/th
 include_directories(${PROJECT_SOURCE_DIR}/thirdparty/sentry/external/crashpad/third_party/mini_chromium/mini_chromium)
 
 # Add breakpad to compile dump_syms and minidump_stackwalk
-if(XXX_ENABLE_SYMBOL_GENERATION)
+if(VideoStabilization_ENABLE_SYMBOL_GENERATION)
   file(
     COPY ${PROJECT_SOURCE_DIR}/thirdparty/sentry/external/third_party
     DESTINATION ${PROJECT_SOURCE_DIR}/thirdparty/sentry/external/breakpad/src/
@@ -140,7 +140,7 @@ target_link_libraries(
 )
 enable_security_flags_for_target(${PROJECT_NAME}-lib)
 
-if(XXX_ENABLE_SYMBOL_GENERATION)
+if(VideoStabilization_ENABLE_SYMBOL_GENERATION)
   generate_symbols_for_target(${PROJECT_NAME}-lib)
 endif()
 
@@ -150,7 +150,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_BINARY_DIR})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}-lib)
 enable_security_flags_for_target(${PROJECT_NAME})
 
-if(XXX_ENABLE_SYMBOL_GENERATION)
+if(VideoStabilization_ENABLE_SYMBOL_GENERATION)
   generate_symbols_for_target(${PROJECT_NAME})
 endif()
 
@@ -168,7 +168,7 @@ set(CONFIG_BASE_DIR "${CMAKE_INSTALL_PREFIX}")
 configure_file(config.json.in "${CMAKE_BINARY_DIR}/config.json")
 install(FILES ${CMAKE_BINARY_DIR}/config.json DESTINATION ${CMAKE_INSTALL_PREFIX}/share/${PROJECT_NAME})
 
-if(XXX_ENABLE_PACKAGING)
+if(VideoStabilization_ENABLE_PACKAGING)
   set(EXE_PATH ${CMAKE_INSTALL_PREFIX}/bin/${PROJECT_NAME})
   set(SERVICE_NAME ${PROJECT_NAME}.service)
   set(POST_INSTALL_SCRIPT ${CMAKE_CURRENT_BINARY_DIR}/postinst)
@@ -212,7 +212,7 @@ Also, it can send logs to syslog using Spdlog, to a Sentry server and Grafana Lo
 
   include(CPack)
 
-  if(XXX_ENABLE_SYMBOL_GENERATION)
+  if(VideoStabilization_ENABLE_SYMBOL_GENERATION)
     # Create archive from symbols
     add_custom_command(
       TARGET ${PROJECT_NAME}
@@ -226,8 +226,8 @@ Also, it can send logs to syslog using Spdlog, to a Sentry server and Grafana Lo
 endif()
 
 # Enable test framework
-if(XXX_BUILD_TESTS)
-  if(XXX_ENABLE_COVERAGE)
+if(VideoStabilization_BUILD_TESTS)
+  if(VideoStabilization_ENABLE_COVERAGE)
     include(CodeCoverage)
     set(GCOVR_ADDITIONAL_ARGS "--exclude-throw-branches")
     append_coverage_compiler_flags()
@@ -240,7 +240,7 @@ if(XXX_BUILD_TESTS)
   add_subdirectory(tests)
   add_dependencies(${TestExecutables} crashpad::handler)
 
-  if(XXX_ENABLE_COVERAGE)
+  if(VideoStabilization_ENABLE_COVERAGE)
     setup_target_for_coverage_gcovr_html(
           NAME
           coverage
