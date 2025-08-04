@@ -1,0 +1,21 @@
+[submodule "thirdparty/cppzmq"]
+	path = thirdparty/cppzmq
+	url = https://github.com/zeromq/cppzmq.git
+[submodule "tests/MemPlumber"]
+	path = tests/MemPlumber
+	url = https://github.com/seladb/MemPlumber.git
+[submodule "thirdparty/sentry"]
+	path = thirdparty/sentry
+	url = https://github.com/getsentry/sentry-native.git
+[submodule "thirdparty/prometheus-cpp"]
+	path = thirdparty/prometheus-cpp
+	url = https://github.com/jupp0r/prometheus-cpp.git
+[submodule "thirdparty/http-status-codes"]
+	path = thirdparty/http-status-codes
+	url = https://github.com/j-ulrich/http-status-codes-cpp.git
+[submodule "thirdparty/date"]
+	path = thirdparty/date
+	url = https://github.com/HowardHinnant/date.git
+[submodule "tests/gtest"]
+	path = tests/gtest
+	url = https://github.com/google/googletest.git

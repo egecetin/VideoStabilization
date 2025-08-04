@@ -1,0 +1,2 @@
+filter=-whitespace/indent,-readability/wonkycase,-convention/filename,-package/stdargs
+linelength=120

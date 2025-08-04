@@ -1,0 +1,5 @@
+{
+    "TELNET_PORT": 23000,
+    "SENTRY_ADDRESS": "http://username:password@localhost:8400/foo",
+    "LOKI_ADDRESS": "http://localhost:8400"
+}

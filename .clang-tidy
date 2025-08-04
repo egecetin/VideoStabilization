@@ -1,0 +1,21 @@
+Checks: 'cert-*,
+clang-analyzer-*,
+concurrency-*,
+cppcoreguidelines-*,
+misc-*,
+modernize-*,
+performance-*,
+portability-*,
+readability-*,
+-clang-diagnostic-unused-command-line-argument,
+-cppcoreguidelines-avoid-magic-numbers,
+-cppcoreguidelines-avoid-do-while,
+-cppcoreguidelines-pro-bounds-pointer-arithmetic,
+-cppcoreguidelines-pro-type-reinterpret-cast,
+-cppcoreguidelines-pro-type-vararg,
+-modernize-use-trailing-return-type,
+-misc-include-cleaner,
+-readability-function-cognitive-complexity,
+-readability-magic-numbers'
+
+WarningsAsErrors: '*'

@@ -1,0 +1,3 @@
+echo "Running post install script for @PROJECT_NAME@ v@PROJECT_VERSION@"
+
+systemctl enable @SERVICE_NAME@

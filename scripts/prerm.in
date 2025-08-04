@@ -1,0 +1,4 @@
+echo "Running pre-uninstall script for @PROJECT_NAME@ v@PROJECT_VERSION@"
+
+systemctl disable @SERVICE_NAME@ || true
+systemctl stop @SERVICE_NAME@ || true

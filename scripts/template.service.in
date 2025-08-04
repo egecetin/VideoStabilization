@@ -1,0 +1,9 @@
+[Unit]
+Description=@PROJECT_NAME@ service
+
+[Service]
+Type=exec
+ExecStart=@EXE_PATH@ --config @CMAKE_INSTALL_PREFIX@/share/@PROJECT_NAME@/config.json --enable-prometheus localhost:2212 --enable-telnet 2215 --enable-zeromq tcp://127.0.0.1:2218
+
+[Install]
+WantedBy=multi-user.target

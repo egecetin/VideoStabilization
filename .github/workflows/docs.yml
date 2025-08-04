@@ -1,0 +1,37 @@
+name: Doxygen GitHub Pages Deploy Action
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    permissions:
+      contents: write  # for JamesIves/github-pages-deploy-action to push changes in repo
+    runs-on: ubuntu-latest
+    container: egecetinn/alpine
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          submodules: recursive
+      - name: Rename templates
+        run: sh scripts/firstName.sh -n Repo-Init
+      - name: Configure
+        run: cmake -S . -B build
+      - name: Generate Doxygen Documentation
+        run: cmake --build build --target docs
+      - name: Create .nojekyll (ensures pages with underscores work on gh pages)
+        run: touch doc/html/.nojekyll
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/master'
+        uses: JamesIves/github-pages-deploy-action@6c2d9db40f9296374acc17b90404b6e8864128c8 # v4.7.3
+        with:
+          branch: gh-pages
+          folder: doc/html
