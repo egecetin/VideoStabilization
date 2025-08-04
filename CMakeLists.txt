@@ -11,6 +11,8 @@ include(GitVersion)
 include(GraphViz)
 
 find_package(CURL REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(OpenGL REQUIRED)
 find_package(RapidJSON REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(ZLIB REQUIRED)
@@ -24,8 +26,8 @@ option(VideoStabilization_ENABLE_SYMBOL_GENERATION "Enables symbol generation fo
 option(VideoStabilization_ENABLE_PACKAGING "Enables DEB/RPM packaging" OFF)
 
 # Set project properties
-set(PROJECT_VERSION_MAJOR 0)
-set(PROJECT_VERSION_MINOR 0)
+set(PROJECT_VERSION_MAJOR 1)
+set(PROJECT_VERSION_MINOR 1)
 set(PROJECT_VERSION_PATCH 0)
 set(PROJECT_VERSION_TWEAK ${REVISION_VERSION})
 set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}-${REVISION_VERSION}")
@@ -96,6 +98,7 @@ include_directories(${PROJECT_SOURCE_DIR}/thirdparty/sentry/include)
 
 # Subdirectories
 add_subdirectory(thirdparty/cppzmq EXCLUDE_FROM_ALL)
+add_subdirectory(thirdparty/freeglut EXCLUDE_FROM_ALL)
 add_subdirectory(thirdparty/prometheus-cpp EXCLUDE_FROM_ALL)
 add_subdirectory(thirdparty/sentry EXCLUDE_FROM_ALL)
 add_subdirectory(thirdparty/sentry/external/crashpad EXCLUDE_FROM_ALL)
@@ -136,7 +139,17 @@ target_compile_options(${PROJECT_NAME}-lib PRIVATE -Wall -Wextra -g -Wl,--build-
 target_include_directories(${PROJECT_NAME}-lib PRIVATE ${PROJECT_BINARY_DIR})
 target_link_libraries(
   ${PROJECT_NAME}-lib
-  PUBLIC cppzmq crashpad::client CURL::libcurl prometheus-cpp::pull sentry::sentry spdlog::spdlog stdc++fs
+  PUBLIC
+    cppzmq
+    crashpad::client
+    CURL::libcurl
+    prometheus-cpp::pull
+    sentry::sentry
+    spdlog::spdlog
+    stdc++fs
+    freeglut_static
+    ${OPENGL_LIBRARIES}
+    ${OpenCV_LIBS}
 )
 enable_security_flags_for_target(${PROJECT_NAME}-lib)
 
